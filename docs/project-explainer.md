@@ -129,12 +129,12 @@ This is stronger than the previous translation layer, but heavier to load.
 
 ## How the codebase is organized
 
-Current tracked file count: `26`
+Current tracked file count: `29`
 
 Breakdown:
 
 - `src`: `15` files
-- `docs`: `4` files
+- `docs`: `5` files
 - `backend`: `2` files
 - root config and entry files: the rest
 
