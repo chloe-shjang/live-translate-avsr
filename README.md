@@ -7,6 +7,7 @@ This is a personal project exploring a browser-based AVSR live translation exper
 - `docs/minimal-fix-plan.md`: minimum changes to make the current Python prototype behave more reliably
 - `docs/web-mvp-architecture.md`: recommended web architecture and folder layout
 - `docs/server-api-contract.md`: current API contract used by the frontend
+- `docs/project-explainer.md`: interview-friendly project explanation and architecture walkthrough
 - `src/*`: React UI skeleton for the webcam translation experience
 
 ## Intended stack
@@ -26,7 +27,8 @@ This is a personal project exploring a browser-based AVSR live translation exper
 ## Current live integration
 
 - `GET /api/health`
+- `POST /api/infer`
 - `POST /api/transcribe`
 - `POST /api/translate`
 
-The deployed server does not yet expose `/vsr`, so the UI marks visual mode as unavailable while keeping the camera preview live.
+The app now prefers `/infer` as the main integration path and prepares synchronized lip ROI clips for future visual speech recognition.

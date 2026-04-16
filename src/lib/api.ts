@@ -62,6 +62,50 @@ export async function translateText(
   };
 }
 
+export async function inferSegment(
+  audio: Blob | null,
+  targetLanguage: string,
+  options?: {
+    video?: Blob | null;
+    sourceLanguageHint?: string | null;
+  }
+) {
+  const formData = new FormData();
+  if (audio) {
+    formData.append("audio", audio, "segment.wav");
+  }
+  formData.append("target_language", targetLanguage);
+
+  if (options?.video) {
+    formData.append("video", options.video, "lip.webm");
+  }
+
+  if (options?.sourceLanguageHint) {
+    formData.append("source_language_hint", options.sourceLanguageHint);
+  }
+
+  const response = await fetch(`${API_BASE}/infer`, {
+    method: "POST",
+    body: formData
+  });
+
+  if (!response.ok) {
+    throw new Error(`Infer failed with ${response.status}`);
+  }
+
+  return (await response.json()) as {
+    source_text: string;
+    translated_text: string;
+    detected_language?: string | null;
+    audio_confidence?: number;
+    visual_text?: string;
+    visual_confidence?: number;
+    visual_motion_score?: number;
+    visual_frames?: number;
+    fusion_source?: "audio" | "visual" | "fusion";
+  };
+}
+
 export function fallbackPermission(error: unknown): PermissionState {
   if (error instanceof DOMException && error.name === "NotAllowedError") {
     return "denied";

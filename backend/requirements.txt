@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+faster-whisper
+numpy
+soundfile
+librosa
+python-multipart
+opencv-python
+torch
+transformers
+accelerate
+sentencepiece

@@ -29,5 +29,6 @@ export type TranscriptFrame = {
   detectedLanguage: string | null;
   source: TranscriptSource;
   confidence: number;
+  visualConfidence?: number;
   ts: number;
 };
