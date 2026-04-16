@@ -20,6 +20,8 @@ export default function App() {
     videoRef,
     status,
     transcript,
+    lipBox,
+    trackingReady,
     setTargetLanguage,
     toggleMic,
     toggleCamera
@@ -51,6 +53,8 @@ export default function App() {
         status={status}
         transcript={transcript}
         videoRef={videoRef}
+        lipBox={lipBox}
+        trackingReady={trackingReady}
         onTargetLanguageChange={setTargetLanguage}
       />
 

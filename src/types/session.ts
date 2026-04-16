@@ -16,6 +16,13 @@ export type SessionStatus = {
   visualState: VisualState;
 };
 
+export type LipBox = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 export type TranscriptFrame = {
   sourceText: string;
   translatedText: string;

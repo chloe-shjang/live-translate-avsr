@@ -244,6 +244,31 @@ select {
   opacity: 0;
 }
 
+.lip-box {
+  position: absolute;
+  border: 2px solid rgba(82, 223, 155, 0.92);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 24px rgba(82, 223, 155, 0.28);
+  background: rgba(82, 223, 155, 0.08);
+  pointer-events: none;
+}
+
+.lip-box__label {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(10, 12, 12, 0.88);
+  border: 1px solid rgba(82, 223, 155, 0.45);
+  color: #7df3b3;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .camera-stage__person {
   position: absolute;
   inset: auto 18% 0 18%;

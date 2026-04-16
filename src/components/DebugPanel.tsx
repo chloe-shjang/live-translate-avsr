@@ -2,6 +2,7 @@ import type { SessionStatus } from "../types/session";
 
 type DebugPanelProps = {
   status: SessionStatus;
+  trackingReady?: boolean;
 };
 
 function levelToBars(level: number) {
@@ -9,7 +10,7 @@ function levelToBars(level: number) {
   return Math.max(1, Math.round(normalized * 5));
 }
 
-export function DebugPanel({ status }: DebugPanelProps) {
+export function DebugPanel({ status, trackingReady }: DebugPanelProps) {
   const bars = levelToBars(status.audioLevel);
 
   return (
@@ -30,6 +31,10 @@ export function DebugPanel({ status }: DebugPanelProps) {
       <div className="debug-row">
         <span>Visual</span>
         <strong>{status.visualState}</strong>
+      </div>
+      <div className="debug-row">
+        <span>Lip Track</span>
+        <strong className={trackingReady ? "tone-good" : ""}>{trackingReady ? "live" : "searching"}</strong>
       </div>
       <div className="debug-row">
         <span>Audio Level</span>

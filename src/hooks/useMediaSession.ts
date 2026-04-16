@@ -3,6 +3,7 @@ import { emptyTranscript, fallbackPermission, fetchHealth, transcribeAudio, tran
 import { encodeWav, mergeFloat32 } from "../lib/wav";
 import type { SessionStatus, TranscriptFrame } from "../types/session";
 import { useAudioLevel } from "./useAudioLevel";
+import { useLipTracking } from "./useLipTracking";
 
 const SEGMENT_MS = 2200;
 const HEALTH_MS = 5000;
@@ -46,12 +47,20 @@ export function useMediaSession() {
 
   const [status, setStatus] = useState<SessionStatus>(initialStatus);
   const [transcript, setTranscript] = useState<TranscriptFrame>(emptyTranscript);
+  const { lipBox, trackingReady } = useLipTracking(videoRef.current, status.cameraOn);
 
   const audioLevel = useAudioLevel(analyserRef.current, status.micOn && status.listening);
 
   useEffect(() => {
     setStatus((current) => ({ ...current, audioLevel }));
   }, [audioLevel]);
+
+  useEffect(() => {
+    setStatus((current) => ({
+      ...current,
+      visualState: trackingReady ? "warming" : "unavailable"
+    }));
+  }, [trackingReady]);
 
   useEffect(() => {
     let cancelled = false;
@@ -235,6 +244,8 @@ export function useMediaSession() {
     videoRef,
     status,
     transcript,
+    lipBox,
+    trackingReady,
     ...controls
   };
 }
