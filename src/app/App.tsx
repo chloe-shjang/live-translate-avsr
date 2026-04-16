@@ -5,14 +5,14 @@ import { useMediaSession } from "../hooks/useMediaSession";
 
 function languageDisplay(language: string | null) {
   if (language === "ko") {
-    return { label: "한국어", flag: "KR" };
+    return { label: "한국어", flag: "🇰🇷" };
   }
 
   if (language === "en") {
-    return { label: "English", flag: "US" };
+    return { label: "English", flag: "🇺🇸" };
   }
 
-  return { label: "Auto", flag: "AI" };
+  return { label: "Auto", flag: "🌐" };
 }
 
 export default function App() {

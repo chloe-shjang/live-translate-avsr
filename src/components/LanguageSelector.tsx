@@ -4,8 +4,8 @@ type LanguageSelectorProps = {
 };
 
 const options = [
-  { value: "ko", label: "한국어", flag: "KR" },
-  { value: "en", label: "English", flag: "US" }
+  { value: "ko", label: "한국어", flag: "🇰🇷" },
+  { value: "en", label: "English", flag: "🇺🇸" }
 ];
 
 export function LanguageSelector({ value, onChange }: LanguageSelectorProps) {
